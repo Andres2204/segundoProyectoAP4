@@ -1,0 +1,42 @@
+p,Carlos,Martinez,12345678901,30,5
+v,Ana,Gomez,9876543210,25,2,sura
+m,Juan,Perez Garcia,456789123,28,savia salud,colmena,porvenir
+p,Maria,Rodriguez,3456789123,35,8
+v,Luis,Hernandez,2345678912,40,4,savia salud
+m,Sofia,Lopez,567891234,22,salud total,colpatria,cesantias
+p,David,Gonzalez,78912345601,45,10
+v,Laura,Fernandez,6789123450,33,6,salud total
+m,Daniel,Rivera,891234567,27,savia salud,segurosalfa,colpensiones
+p,Paola,Chavez,456123789,29,4
+v,Pablo,Ramirez,9876541230,31,7,sura
+m,Carla,Mendoza,654123789,26,salud total,colmena,porvenir
+p,Alejandro Jose,Garcia,32165498701,38,12
+v,Maria Jose,Jimenez,8795463210,36,9,savia salud
+m,Javier,Castro,987321654,24,salud total,colpatria,cesantias
+p,Andrea Carolina,Rojas,654987123,32,6
+v,Ricardo,Sanchez,12378945601,39,8,sura
+m,Valeria,Torres Rodriguez,321456987,23,savia salud,segurosalfa,colpensiones
+p,Sergio,Ortega,78945632101,41,11
+v,Fernanda,Alvarez,4569873210,37,5,salud total
+m,Gabriel,Vargas,987456321,25,savia salud,colmena,porvenir
+p,Lucia,Santos,654789321,34,7
+v,Miguel Angel,Martinez,2345678912,42,10,sura
+m,Monica Isabel,Hernandez,879654123,21,salud total,colpatria,cesantias
+p,Diana,Fernandez,98712345601,33,8
+v,Eduardo,Gonzalez,45678912301,43,11,sura
+m,Sara Ana,Rodriguez,123456789,20,savia salud,segurosalfa,cesantias
+p,Raul,Chavez,6543219870,36,9
+v,Carolina,Ramirez,78912345601,44,12,sura
+m,Jorge Lopez,Martinez,234567891,22,salud total,colmena,porvenir
+p,Andres Felipe,Rodriguez,567890123,37,6
+v,Sofia,Hernandez,678901234,28,3,savia salud
+m,Luisa,Perez,789012345,26,salud total,colpatria,cesantias
+p,Julia Maria,Garcia,890123456,40,7
+v,Diego,Martinez,901234567,35,5,sura
+m,Camila,Fernandez,123450987,23,savia salud,segurosalfa,cesantias
+p,Ruben Andres,Sanchez,234509876,32,8
+v,Alicia,Gonzalez,345098765,29,4,sura
+m,Esteban,Ramirez,450987654,25,salud total,colmena,porvenir
+p,Carmen,Martinez,560987123,39,9
+v,Jose,Lopez,609871234,44,10,sura
+m,Paula,Torres,709812345,27,salud total,colpatria,cesantias
