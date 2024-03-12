@@ -7,9 +7,9 @@ public class logica {
     private ArrayList<Mensajero> mensajeros;
 
     public logica() {
-        panaderos = new ArrayList<>();
-        vendedores = new ArrayList<>();
-        mensajeros = new ArrayList<>();
+        panaderos = new ArrayList<Panadero>();
+        vendedores = new ArrayList<Vendedor>();
+        mensajeros = new ArrayList<Mensajero>();
         CargarDatos();
     }
 
