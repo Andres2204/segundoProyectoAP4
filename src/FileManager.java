@@ -50,7 +50,7 @@ public class FileManager {
         } finally { // intentar cerrar el fileWriter
             try {
                 if (fw != null) fw.close();
-                System.out.println("pass");
+                System.out.println("Se ha Guardado \"" + linea + "\" Correctamente!" );
             } catch (IOException e2) {
                 System.out.println("E2");
                 e2.printStackTrace();

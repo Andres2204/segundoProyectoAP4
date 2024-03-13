@@ -1,10 +1,11 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class logica {
-    private ArrayList<Panadero> panaderos;
-    private ArrayList<Vendedor> vendedores;
-    private ArrayList<Mensajero> mensajeros;
+    private final ArrayList<Panadero> panaderos;
+    private final ArrayList<Vendedor> vendedores;
+    private final ArrayList<Mensajero> mensajeros;
 
     public logica() {
         panaderos = new ArrayList<Panadero>();
@@ -18,29 +19,22 @@ public class logica {
             FileManager f = new FileManager("trabajadores.txt");
             String[] lineas = f.readFile().split("-");
 
-            ArrayList<Panadero> panaderos = new ArrayList<>();
-            ArrayList<Vendedor> vendedores = new ArrayList<>();
-            ArrayList<Mensajero> mensajeros = new ArrayList<>();
-
             for (int i = 0; i < lineas.length; i++) {
                 String[] trabajador = lineas[i].split(",");
                 Persona p = new Persona(trabajador[1], trabajador[2], trabajador[3], Byte.parseByte(trabajador[4]));
-                if (trabajador[0].equals("p")) {
+
+                // Seleccioanar tipo
+                if (trabajador[0].equals("p")) { // Panadero
                     panaderos.add(new Panadero(p, Byte.parseByte(trabajador[5])));
 
-                } else if (trabajador[0].equals("v")) {
+                } else if (trabajador[0].equals("v")) { // Vendedor
                     vendedores.add(new Vendedor(p, Byte.parseByte(trabajador[5]), trabajador[6]));
 
-                } else if (trabajador[0].equals("m")) {
+                } else if (trabajador[0].equals("m")) { // Mensajero
                     mensajeros.add(new Mensajero(p, trabajador[5], trabajador[6], trabajador[7]));
 
-                }
-
+                } else System.out.println("Trabajador invalido -> " + trabajador.toString());
             }
-
-            this.panaderos = panaderos;
-            this.vendedores = vendedores;
-            this.mensajeros = mensajeros;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -49,15 +43,20 @@ public class logica {
     public String MostrarTrabajadores() {
         String r = "";
         r += "-------- Trabajadores : PANADEROS --------";
-        for (Panadero p : panaderos) {
+        Iterator<Panadero> pi = panaderos.iterator();
+        while (pi.hasNext()) {
+            Panadero p = pi.next();
             r += "\n\nnombres: " + p.getNombres() +
                     "\nApellidos: " + p.getApellidos() +
                     "\nCC: " + p.getCC() +
                     "\nEdad: " + p.getEdad() +
                     "\nExperiencia: " + p.getExp();
         }
+
         r += "\n\n-------- Trabajadores : VENDEDORES --------";
-        for (Vendedor v : vendedores) {
+        Iterator<Vendedor> vi = vendedores.iterator();
+        while (vi.hasNext()) {
+            Vendedor v = vi.next();
             r += "\n\nnombres: " + v.getNombres() +
                     "\nApellidos: " + v.getApellidos() +
                     "\nCC: " + v.getCC() +
@@ -65,10 +64,13 @@ public class logica {
                     "\nExperiencia: " + v.getExp() +
                     "\nEPS: " + v.getEps();
         }
+
         r += "\n\n-------- Trabajadores : MENSAJEROS --------";
-        for (Mensajero m : mensajeros) {
+        Iterator<Mensajero> mi = mensajeros.iterator();
+        while (mi.hasNext()) {
+            Mensajero m = mi.next();
             r += "\n\nnombres: " + m.getNombres() +
-                    "\nApellidos: " + m.getApellidos() +
+                   "\nApellidos: " + m.getApellidos() +
                     "\nCC: " + m.getCC() +
                     "\nEdad: " + m.getEdad() +
                     "\nEPS: " + m.getEps() +
@@ -118,7 +120,7 @@ public class logica {
             }
         }
         if (r.isEmpty()) {
-            r = "No hay un trabajador con ese nombre";
+            r = "No hay un trabajador con ese numero de cedula.";
         }
         return r;
     }
@@ -135,35 +137,35 @@ public class logica {
                 NtrabajadoresEnEps++;
             }
         }
-        return (NtrabajadoresEnEps/(mensajeros.size()+panaderos.size()+vendedores.size()))*100;
+        return (NtrabajadoresEnEps / (mensajeros.size() + panaderos.size() + vendedores.size())) * 100;
     }
 
-    public String NombresTrabajadoresEnPension(String Pension){
+    public String NombresTrabajadoresEnPension(String Pension) {
         String r = "";
         for (Mensajero m : mensajeros) {
             if (m.getPension().equals(Pension)) {
-                r += "\n"+m.getNombres()+" "+m.getApellidos()+"\n";
+                r += "\n" + m.getNombres() + " " + m.getApellidos() + "\n";
             }
         }
         return r;
     }
 
-    public void IngresarTrabajador(Panadero panadero){
+    public void IngresarTrabajador(Panadero panadero) {
         try {
             panaderos.add(panadero);
             FileManager f = new FileManager("trabajadores.txt");
-            f.adicionarLinea("\np,"+panadero.getNombres()+","+panadero.getApellidos()+","+panadero.getCC()+","+panadero.getEdad()+","+panadero.getExp());
+            f.adicionarLinea("\np," + panadero.getNombres() + "," + panadero.getApellidos() + "," + panadero.getCC() + "," + panadero.getEdad() + "," + panadero.getExp());
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
-    public void IngresarTrabajador(Vendedor vendedor){
+    public void IngresarTrabajador(Vendedor vendedor) {
         try {
             vendedores.add(vendedor);
             FileManager f = new FileManager("trabajadores.txt");
-            f.adicionarLinea("\nv,"+vendedor.getNombres()+","+vendedor.getApellidos()+","+vendedor.getCC()+","+vendedor.getEdad()+","+vendedor.getExp()+","+vendedor.getEps());
+            f.adicionarLinea("\nv," + vendedor.getNombres() + "," + vendedor.getApellidos() + "," + vendedor.getCC() + "," + vendedor.getEdad() + "," + vendedor.getExp() + "," + vendedor.getEps());
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -171,15 +173,15 @@ public class logica {
 
     }
 
-    public void IngresarTrabajador(Mensajero mensajero){
+    public void IngresarTrabajador(Mensajero mensajero) {
         try {
             mensajeros.add(mensajero);
             FileManager f = new FileManager("trabajadores.txt");
-            f.adicionarLinea("\nm,"+mensajero.getNombres()+","+mensajero.getApellidos()+","+mensajero.getCC()+","+mensajero.getEdad()+","+mensajero.getEps()+","+mensajero.getArl()+","+mensajero.getPension());
+            f.adicionarLinea("\nm," + mensajero.getNombres() + "," + mensajero.getApellidos() + "," + mensajero.getCC() + "," + mensajero.getEdad() + "," + mensajero.getEps() + "," + mensajero.getArl() + "," + mensajero.getPension());
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
-    
+
 }
