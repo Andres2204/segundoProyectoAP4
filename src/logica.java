@@ -184,4 +184,22 @@ public class logica {
         }
     }
 
+    public float PromedioExpEnRango(byte Rm,byte RM){
+        float NtrabajadoresEnRango = 0;
+        float Exp = 0;
+        for (Panadero p : panaderos) {
+            if (p.getExp() >= Rm && p.getExp() <= RM) {
+                NtrabajadoresEnRango++;
+                Exp += p.getExp();
+            }
+        }
+        for (Vendedor v : vendedores) {
+            if (v.getExp() >= Rm && v.getExp() <= RM) {
+                NtrabajadoresEnRango++;
+                Exp += v.getExp();
+            }
+        }
+        return Exp/NtrabajadoresEnRango;
+    }
+
 }

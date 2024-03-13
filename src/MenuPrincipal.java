@@ -18,7 +18,8 @@ public class MenuPrincipal extends Menu {
                             "6. Nombre de Trabajadores con una pension determinada\n" +
                             "0. Salir");
 
-            if (opt == null || opt.equals("0")) System.exit(0);
+            if (opt == null || opt.equals("0"))
+                System.exit(0);
 
             switch (opt) {
                 case "1": // Mostrar trabajadores
@@ -40,27 +41,30 @@ public class MenuPrincipal extends Menu {
                     } while (aux);
 
                     // Recolectar datos basicos
-                    //      Nombres y apellidos
+                    // Nombres y apellidos
                     String NombreTrabajador;
                     String ApellidoTrabajador;
                     aux = true;
                     do {
                         NombreTrabajador = input("Nombres del trabajador:").trim();
                         ApellidoTrabajador = input("Apellidos del trabajador:").trim();
-                        if (!NombreTrabajador.isEmpty() || !ApellidoTrabajador.isEmpty()) aux = false;
+                        if (!NombreTrabajador.isEmpty() || !ApellidoTrabajador.isEmpty())
+                            aux = false;
                     } while (aux);
 
-                    //      Cedula
+                    // Cedula
                     String CC;
                     aux = true;
                     do {
                         CC = input("Cedula del trabajador:");
-                        if (esNumerico(CC) && (CC.length() >= 6 && CC.length() <= 10)) aux = false;
-                        else msg("Cedula Incorrecta (6<CC<10)");
+                        if (esNumerico(CC) && (CC.length() >= 6 && CC.length() <= 10))
+                            aux = false;
+                        else
+                            msg("Cedula Incorrecta (6<CC<10)");
 
                     } while (aux);
 
-                    //      Edad.
+                    // Edad.
                     String edad;
                     aux = true;
                     do {
@@ -77,8 +81,10 @@ public class MenuPrincipal extends Menu {
                         aux = true;
                         do {
                             exp = input("Ingrese los años de experiencia");
-                            if (esNumerico(exp) && Byte.parseByte(exp) > 0) aux = false;
-                            else msg("Experiencia invalida (exp > 0)");
+                            if (esNumerico(exp) && Byte.parseByte(exp) > 0)
+                                aux = false;
+                            else
+                                msg("Experiencia invalida (exp > 0)");
 
                         } while (aux);
                     }
@@ -113,6 +119,17 @@ public class MenuPrincipal extends Menu {
                     break;
 
                 case "4": // Promedio de trabajadores en un rango de años de experiencia determinada
+                aux = true;    
+                String Rm,RM;
+                do {
+                      Rm = input("Ingrese el rango inferior: ");
+                      RM = input("Ingrese el rango superior: ");
+                        if(esNumerico(Rm) && esNumerico(RM) && Byte.parseByte(Rm) <= Byte.parseByte(RM)){
+                            aux = false;
+                        }else
+                            msg("Datos incorrectos");
+                    } while (aux);
+                    msg(logica.PromedioExpEnRango(Byte.parseByte(Rm), Byte.parseByte(RM))+"");
                     break;
 
                 case "5":
@@ -136,7 +153,7 @@ public class MenuPrincipal extends Menu {
     }
 
     public String Eps() { // se puede simplificar con vectores
-        String[] eps = {"sura", "savia salud", "salud total"};
+        String[] eps = { "sura", "savia salud", "salud total" };
         while (true) {
             String opt = input("Seleccione la Eps:\n1. Sura\n2. Savia salud\n3. Salud total");
             if (!esNumerico(opt) && Integer.parseInt(opt) >= 1 && Integer.parseInt(opt) <= 3) {
@@ -147,7 +164,7 @@ public class MenuPrincipal extends Menu {
     }
 
     public String arl() {
-        String[] arl = {"colmena", "colpatria", "segurosalfa"};
+        String[] arl = { "colmena", "colpatria", "segurosalfa" };
         while (true) {
             String opt = input("Seleccione la Eps:\n1. Colmena\n2. Colpatria\n3. Segurosalfa");
             if (!esNumerico(opt) && Integer.parseInt(opt) >= 1 && Integer.parseInt(opt) <= 3) {
@@ -158,7 +175,7 @@ public class MenuPrincipal extends Menu {
     }
 
     public String pension() {
-        String[] pensiones = {"porvenir", "cesanitas", "colpensiones"};
+        String[] pensiones = { "porvenir", "cesanitas", "colpensiones" };
         while (true) {
             String opt = input("Seleccione la Pension:\n1. Porvenir\n2. Cesanitas\n3. Colpensiones");
             if (!esNumerico(opt) && Integer.parseInt(opt) >= 1 && Integer.parseInt(opt) <= 3) {
@@ -168,6 +185,3 @@ public class MenuPrincipal extends Menu {
         }
     }
 }
-
-
-
