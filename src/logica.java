@@ -50,7 +50,7 @@ public class logica {
         String r = "";
         r += "-------- Trabajadores : PANADEROS --------";
         for (Panadero p : panaderos) {
-            r += "\nnombres: " + p.getNombres() +
+            r += "\n\nnombres: " + p.getNombres() +
                     "\nApellidos: " + p.getApellidos() +
                     "\nCC: " + p.getCC() +
                     "\nEdad: " + p.getEdad() +
@@ -58,7 +58,7 @@ public class logica {
         }
         r += "\n\n-------- Trabajadores : VENDEDORES --------";
         for (Vendedor v : vendedores) {
-            r += "\nnombres: " + v.getNombres() +
+            r += "\n\nnombres: " + v.getNombres() +
                     "\nApellidos: " + v.getApellidos() +
                     "\nCC: " + v.getCC() +
                     "\nEdad: " + v.getEdad() +
@@ -67,7 +67,7 @@ public class logica {
         }
         r += "\n\n-------- Trabajadores : MENSAJEROS --------";
         for (Mensajero m : mensajeros) {
-            r += "\nnombres: " + m.getNombres() +
+            r += "\n\nnombres: " + m.getNombres() +
                     "\nApellidos: " + m.getApellidos() +
                     "\nCC: " + m.getCC() +
                     "\nEdad: " + m.getEdad() +
@@ -124,7 +124,7 @@ public class logica {
     }
 
     public float PorcentajeEps(String eps) {
-        int NtrabajadoresEnEps = 0;
+        float NtrabajadoresEnEps = 0;
         for (Mensajero m : mensajeros) {
             if (m.getEps().equals(eps)) {
                 NtrabajadoresEnEps++;
@@ -135,14 +135,14 @@ public class logica {
                 NtrabajadoresEnEps++;
             }
         }
-        return NtrabajadoresEnEps/(mensajeros.size()+panaderos.size()+vendedores.size())*100;
+        return (NtrabajadoresEnEps/(mensajeros.size()+panaderos.size()+vendedores.size()))*100;
     }
 
     public String NombresTrabajadoresEnPension(String Pension){
         String r = "";
         for (Mensajero m : mensajeros) {
             if (m.getPension().equals(Pension)) {
-                r += m.getNombres()+" "+m.getApellidos()+"\n";
+                r += "\n"+m.getNombres()+" "+m.getApellidos()+"\n";
             }
         }
         return r;
@@ -152,7 +152,7 @@ public class logica {
         try {
             panaderos.add(panadero);
             FileManager f = new FileManager("trabajadores.txt");
-            f.adicionarLinea("p,"+panadero.getNombres()+","+panadero.getApellidos()+","+panadero.getCC()+","+panadero.getEdad()+","+panadero.getExp());
+            f.adicionarLinea("\np,"+panadero.getNombres()+","+panadero.getApellidos()+","+panadero.getCC()+","+panadero.getEdad()+","+panadero.getExp());
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -163,7 +163,7 @@ public class logica {
         try {
             vendedores.add(vendedor);
             FileManager f = new FileManager("trabajadores.txt");
-            f.adicionarLinea("v,"+vendedor.getNombres()+","+vendedor.getApellidos()+","+vendedor.getCC()+","+vendedor.getEdad()+","+vendedor.getExp()+","+vendedor.getEps());
+            f.adicionarLinea("\nv,"+vendedor.getNombres()+","+vendedor.getApellidos()+","+vendedor.getCC()+","+vendedor.getEdad()+","+vendedor.getExp()+","+vendedor.getEps());
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -175,7 +175,7 @@ public class logica {
         try {
             mensajeros.add(mensajero);
             FileManager f = new FileManager("trabajadores.txt");
-            f.adicionarLinea("m,"+mensajero.getNombres()+","+mensajero.getApellidos()+","+mensajero.getCC()+","+mensajero.getEdad()+","+mensajero.getEps()+","+mensajero.getArl()+","+mensajero.getPension());
+            f.adicionarLinea("\nm,"+mensajero.getNombres()+","+mensajero.getApellidos()+","+mensajero.getCC()+","+mensajero.getEdad()+","+mensajero.getEps()+","+mensajero.getArl()+","+mensajero.getPension());
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
