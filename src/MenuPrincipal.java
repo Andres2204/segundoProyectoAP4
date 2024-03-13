@@ -71,7 +71,7 @@ public class MenuPrincipal extends Menu {
                         logica.IngresarTrabajador(new Panadero(
                                     new Persona(NombreTrabajador, ApellidoTrabajador, CC, Byte.parseByte(edad)),
                                     Byte.parseByte(exp)));
-                    }else if(Ttrabajador.equals("1")){
+                    }else if(Ttrabajador.equals("2")){
                         logica.IngresarTrabajador(new Vendedor(
                                     new Persona(NombreTrabajador, ApellidoTrabajador, CC, Byte.parseByte(edad)),
                                     Byte.parseByte(exp), eps));
