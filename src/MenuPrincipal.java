@@ -23,7 +23,7 @@ public class MenuPrincipal extends Menu {
 
                 case "2":
                     String Ttrabajador;
-                    boolean aux = true ;
+                    boolean aux = true;
                     do {
                         Ttrabajador = input("Seleccione una opción:\n1. Panadero\n2. Vendedor\n3. Mensajero");
                         if (!isInt(Ttrabajador) || Integer.parseInt(Ttrabajador) < 1
@@ -35,7 +35,7 @@ public class MenuPrincipal extends Menu {
                     String NombreTrabajador = input("Nombres del trabajador:");
                     String ApellidoTrabajador = input("Apellidos del trabajador:");
                     String CC;
-                    
+
                     do {
                         CC = input("Cedula del trabajador:");
                         if (!isInt(CC)) {
@@ -65,107 +65,23 @@ public class MenuPrincipal extends Menu {
                     }
                     String eps = "";
                     if (Ttrabajador.equals("2") || Ttrabajador.equals("3")) {
-                        aux = true;
-                        do {
-                            String aux2 = input("Seleccione la Eps:\n1. Sura\n2. Savia salud\n3. Salud total");
-                            if (!isInt(aux2) || Integer.parseInt(aux2) < 1
-                                    || Integer.parseInt(aux2) > 3) {
-                                msg("Opcion incorrecta");
-                            } else {
-                                aux = false;
-                                switch (aux2) {
-                                    case "1":
-                                        eps = "sura";
-                                        break;
-                                    case "2":
-                                        eps = "savia salud";
-                                        break;
-                                    case "3":
-                                        eps = "salud total";
-                                        break;
-                                    default:
-                                        break;
-                                }
-                               
-                            }
-
-                        } while (aux);
+                        eps = Eps();
                     }
-                    switch (Ttrabajador) {
-                        case "1":
-                            logica.IngresarTrabajador(new Panadero(
+                    if (Ttrabajador.equals("1")) {
+                        logica.IngresarTrabajador(new Panadero(
                                     new Persona(NombreTrabajador, ApellidoTrabajador, CC, Byte.parseByte(edad)),
                                     Byte.parseByte(exp)));
-                            break;
-                        case "2":
-                            logica.IngresarTrabajador(new Vendedor(
+                    }else if(Ttrabajador.equals("1")){
+                        logica.IngresarTrabajador(new Vendedor(
                                     new Persona(NombreTrabajador, ApellidoTrabajador, CC, Byte.parseByte(edad)),
                                     Byte.parseByte(exp), eps));
-                            break;
-                        case "3":
-                            String arl = "";
-                            aux = true;
-                            do {
-                                String aux2 = input("Seleccione la Eps:\n1. Colmena\n2. Colpatria\n3. Segurosalfa");
-                                if (!isInt(aux2) || Integer.parseInt(aux2) < 1
-                                        || Integer.parseInt(aux2) > 3) {
-                                    msg("Opcion incorrecta");
-                                } else {
-                                    aux = false;
-                                    switch (aux2) {
-                                        case "1":
-                                            arl = "colmena";
-                                            break;
-                                        case "2":
-                                            arl = "colpatria";
-                                            break;
-                                        case "3":
-                                            arl = "segurosalfa";
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                
-                                }
-
-                            } while (aux);
-                            String pension = "";
-                            aux = true;
-                            do {
-                                String aux2 = input(
-                                        "Seleccione la Pension:\n1. Porvenir\n2. Cesanitas\n3. Colpensiones");
-                                if (!isInt(aux2) || Integer.parseInt(aux2) < 1
-                                        || Integer.parseInt(aux2) > 3) {
-                                    msg("Opcion incorrecta");
-                                } else {
-                                    aux = false;
-                                    switch (aux2) {
-                                        case "1":
-                                            pension = "porvenir";
-                                            break;
-                                        case "2":
-                                            pension = "cesanitas";
-                                            break;
-                                        case "3":
-                                            pension = "colpensiones";
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                             
-                                }
-
-                            } while (aux);
-
+                    }else{
+                        String arl = arl();
+                            String pension = pension();
                             logica.IngresarTrabajador(new Mensajero(
                                     new Persona(NombreTrabajador, ApellidoTrabajador, CC, Byte.parseByte(edad)), eps,
                                     arl, pension));
-
-                            break;
-                        default:
-                            break;
                     }
-
                 case "3":
                     msg(logica.BuscarTrabajador(input("Ingrese la cedula del trabjador a buscar")));
 
@@ -175,63 +91,11 @@ public class MenuPrincipal extends Menu {
 
                     break;
                 case "5":
-                    String eps2 = "";
-                    aux = true;
-                    do {
-                        String aux2 = input("Seleccione la Eps:\n1. Sura\n2. Savia salud\n3. Salud total");
-                        if (!isInt(aux2) || Integer.parseInt(aux2) < 1
-                                || Integer.parseInt(aux2) > 3) {
-                            msg("Opcion incorrecta");
-                        } else {
-                            aux = false;
-                            switch (aux2) {
-                                case "1":
-                                    eps2 = "sura";
-                                    break;
-                                case "2":
-                                    eps2 = "savia salud";
-                                    break;
-                                case "3":
-                                    eps2 = "salud total";
-                                    break;
-                                default:
-                                    break;
-                            }
-                       
-                        }
-
-                    } while (aux);
-
-                    msg(Float.toString(logica.PorcentajeEps(eps2))+"%");
+                    String eps2 = Eps();
+                    msg(Float.toString(logica.PorcentajeEps(eps2)) + "%");
                     break;
                 case "6":
-                String pension2 = "";
-                aux = true;
-                do {
-                    String aux2 = input(
-                            "Seleccione la Pension:\n1. Porvenir\n2. Cesanitas\n3. Colpensiones");
-                    if (!isInt(aux2) || Integer.parseInt(aux2) < 1
-                            || Integer.parseInt(aux2) > 3) {
-                        msg("Opcion incorrecta");
-                    } else {
-                        aux = false;
-                        switch (aux2) {
-                            case "1":
-                                pension2 = "porvenir";
-                                break;
-                            case "2":
-                                pension2 = "cesanitas";
-                                break;
-                            case "3":
-                                pension2 = "colpensiones";
-                                break;
-                            default:
-                                break;
-                        }
-                     
-                    }
-
-                } while (aux);
+                    String pension2 = pension();
                     msgScroll(logica.NombresTrabajadoresEnPension(pension2));
 
                     break;
@@ -263,5 +127,96 @@ public class MenuPrincipal extends Menu {
         }
 
         return resultado;
+    }
+
+    public String Eps() {
+        String eps2 = "";
+        boolean aux = true;
+        do {
+            String aux2 = input("Seleccione la Eps:\n1. Sura\n2. Savia salud\n3. Salud total");
+            if (!isInt(aux2) || Integer.parseInt(aux2) < 1
+                    || Integer.parseInt(aux2) > 3) {
+                msg("Opcion incorrecta");
+            } else {
+                aux = false;
+                switch (aux2) {
+                    case "1":
+                        eps2 = "sura";
+                        break;
+                    case "2":
+                        eps2 = "savia salud";
+                        break;
+                    case "3":
+                        eps2 = "salud total";
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+
+        } while (aux);
+        return eps2;
+    }
+
+    public String arl() {
+        String arl = "";
+        boolean aux = true;
+        do {
+            String aux2 = input("Seleccione la Eps:\n1. Colmena\n2. Colpatria\n3. Segurosalfa");
+            if (!isInt(aux2) || Integer.parseInt(aux2) < 1
+                    || Integer.parseInt(aux2) > 3) {
+                msg("Opcion incorrecta");
+            } else {
+                aux = false;
+                switch (aux2) {
+                    case "1":
+                        arl = "colmena";
+                        break;
+                    case "2":
+                        arl = "colpatria";
+                        break;
+                    case "3":
+                        arl = "segurosalfa";
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+
+        } while (aux);
+        return arl;
+    }
+
+    public String pension() {
+        String pension = "";
+        boolean aux = true;
+        do {
+            String aux2 = input(
+                    "Seleccione la Pension:\n1. Porvenir\n2. Cesanitas\n3. Colpensiones");
+            if (!isInt(aux2) || Integer.parseInt(aux2) < 1
+                    || Integer.parseInt(aux2) > 3) {
+                msg("Opcion incorrecta");
+            } else {
+                aux = false;
+                switch (aux2) {
+                    case "1":
+                        pension = "porvenir";
+                        break;
+                    case "2":
+                        pension = "cesanitas";
+                        break;
+                    case "3":
+                        pension = "colpensiones";
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+
+        } while (aux);
+        return pension;
     }
 }
